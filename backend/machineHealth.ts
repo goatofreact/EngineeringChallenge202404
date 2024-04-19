@@ -1,4 +1,4 @@
-import {Request} from 'express';
+import { Request } from 'express';
 import {
   AssemblyLinePart,
   MachineType,
@@ -7,9 +7,10 @@ import {
   WeldingRobotPart,
   partInfo,
 } from '../native-app/data/types';
-import {calculateMachineHealth} from './calculations';
+import { calculateMachineHealth } from './calculations';
 
 export const getMachineHealth = (req: Request) => {
+  console.log("req", req.body);
   /* Assuming the request body contains the machine's name and parts data in the format of
   {
     "machines": {
@@ -39,7 +40,7 @@ export const getMachineHealth = (req: Request) => {
   } = req.body;
 
   if (!machines) {
-    return {error: 'Invalid input format'};
+    return { error: 'Invalid input format' };
   }
 
   const machineScores: {

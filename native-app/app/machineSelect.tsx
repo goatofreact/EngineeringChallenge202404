@@ -1,9 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import { Platform, StyleSheet } from 'react-native';
-
+import machineJson from '../data/machineData.json'
 import { Text, View } from '../components/Themed';
-
 export default function ModalScreen() {
+  console.log('machineData')
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Select Machine</Text>

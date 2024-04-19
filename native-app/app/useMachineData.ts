@@ -1,4 +1,4 @@
-import {useState, useEffect, useMemo, useCallback} from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const useMachineData = () => {
@@ -18,7 +18,11 @@ export const useMachineData = () => {
         const parsedMachineData = JSON.parse(storedMachineData);
         setMachineData(parsedMachineData);
       } else {
-        setMachineData(undefined);
+        setMachineData({
+          "login": {
+            "session": undefined
+          }
+        });
       }
     } catch (error) {
       console.error(error);

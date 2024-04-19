@@ -1,6 +1,8 @@
-import express, {Router} from 'express';
+import express, { Router } from 'express';
 import serverless from 'serverless-http';
-import {getMachineHealth} from '../../../machineHealth';
+import { getMachineHealth } from '../../../machineHealth';
+import { validateUsernamePassword } from '../../../utils';
+import { login } from '../../../mysql';
 
 const api = express();
 
@@ -15,6 +17,27 @@ router.post('/machine-health', (req, res) => {
     res.status(400).json(result);
   } else {
     res.json(result);
+  }
+});
+
+router.post('/login', (req, res) => {
+  console.log('login')
+  const { username, password } = req.body;
+  if (validateUsernamePassword(username, password)) {
+    login(username, password);
+    res.json(req.body);
+  } else {
+    res.status(400).json(req.body);
+  }
+
+});
+
+router.post('/logout', (req, res) => {
+  const { username, password } = req.body;
+  if (validateUsernamePassword(username, password)) {
+    res.json(req.body);
+  } else {
+    res.status(400).json(req.body);
   }
 });
 

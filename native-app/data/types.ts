@@ -43,10 +43,11 @@ export enum QualityControlStationPart {
 
 export type partInfo = {
   name:
-    | WeldingRobotPart
-    | PaintingStationPart
-    | AssemblyLinePart
-    | QualityControlStationPart;
+  | WeldingRobotPart
+  | PaintingStationPart
+  | AssemblyLinePart
+  | QualityControlStationPart;
+
   value: number;
 };
 
@@ -57,3 +58,20 @@ export const machineNames = {
   [MachineType.AssemblyLine]: 'Assembly Line',
   [MachineType.QualityControlStation]: 'Quality Control Station',
 };
+
+
+export const apiMap = {
+  machineHealth: '/machine-health',
+  machinePost: '/machine-post',
+  partPost: '/part-post',
+  login: '/logout',
+  signUp: '/sign-up',
+  logout: '/logout',
+  checkAuth: '/check-auth'
+}
+
+export enum RangeLevels {
+  normalRange = 'normalRange',
+  abnormalRange = 'abnormalRange',
+  optimalRange = 'optimalRange',
+}

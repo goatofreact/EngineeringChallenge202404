@@ -1,0 +1,74 @@
+ CREATE TABLE user (email VARCHAR(20), name VARCHAR(20),
+       sessionId VARCHAR(20), created DATE, updated DATE);
+
+
+CREATE TABLE users (
+    ID int NOT NULL AUTO_INCREMENT,
+    username varchar(255),
+    password varchar(255),
+    session varchar(255) DEFAULT (uuid()),
+    lastLogin  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE (ID)
+);
+
+INSERT INTO users (name, session, lastLogin)
+VALUES ("first", UUID(), "2001-01-01");
+
+INSERT INTO users (username)
+VALUES ("larry");
+
+SELECT * FROM users;
+
+DROP TABLE  weldingRobot;
+DROP TABLE  paintingStation;
+DROP TABLE  assemblyLine;
+DROP TABLE  qualityControlStation;
+
+CREATE TABLE weldingRobot (
+    ID int NOT NULL AUTO_INCREMENT,
+    errorRate float,
+vibrationLevel float,
+electrodeWear float,
+shieldingPressure float,
+wireFeedRate float,
+arcStability float,
+seamWidth float,
+coolingEfficiency float,
+    UNIQUE (ID)
+);
+
+CREATE TABLE paintingStation (
+   ID int NOT NULL AUTO_INCREMENT,
+    flowRate float,
+pressure float,
+colorConsistency float,
+nozzleCondition float,
+    UNIQUE (ID)
+);
+
+CREATE TABLE assemblyLine (
+   ID int NOT NULL AUTO_INCREMENT,
+    alignmentAccuracy float,
+speed float,
+fittingTolerance float,
+beltSpeed float,
+    UNIQUE (ID)
+);
+
+
+CREATE TABLE qualityControlStation (
+    ID int NOT NULL AUTO_INCREMENT,
+    cameraCalibration float,
+lightIntensity float,
+softwareVersion float,
+criteriaSettings float,
+    UNIQUE (ID)
+);
+
+
+
+
+
+curl -X POST -H "Content-Type: application/json" -d '{
+  "username": "nothing", "password": "somehting"
+}' http://localhost:3001/login
